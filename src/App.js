@@ -1,6 +1,7 @@
 import TestHookUseContext from './hooks/useContext/useContext'
 import TestHookUseState from './hooks/useState/useState'
 import TestHookUseEffect from './hooks/useEffect/useEffect';
+import TestHookUseRef from './hooks/useRef/useRef';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       {/* <TestHookUseContext /> */}
       {/* <TestHookUseState /> */}
       {/* <TestHookUseEffect />  */}
+      <TestHookUseRef />
     </div>
   );
 }
