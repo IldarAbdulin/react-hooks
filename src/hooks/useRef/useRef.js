@@ -1,43 +1,39 @@
 import './style.css'
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef, useCallback } from "react"
 
 function TestUseRef() {
-    const [numbers, setNumbers] = useState([1, 2, 3]);
-    // const ulRef = useRef();
-    const timerRef = useRef();
-
-    // const addNumber = () => {
-    //     const lastNumber = numbers[numbers.length - 1];
-    //     setNumbers([...numbers, lastNumber + 1])
-    // }
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5, 6]);
+    const ulRef = useRef();
+    const numbersRef = useRef;
+    numbersRef.current = numbers;
+    // const timerRef = useRef();
 
     const addNumber = () => {
         setNumbers((prev) => [...prev, prev[prev.length - 1] + 1]);
     }
 
-    // const handleScroll = () => {
-    //     console.log('Был скролл')
-    // }
+    const handleScroll = useCallback(() => {
+        console.log('Был скролл', numbersRef.current)
+    }, [])
 
-    // const removeScroll = () => {
-    //     console.log(ulRef);
-    //     ulRef.current.removeEventListener('scroll', handleScroll)
-    // }
-
-    // const addScroll = () => {
-    //     ulRef.current.addEventListener('scroll', handleScroll)
-    // }
-
-    const start = () => {
-        timerRef.current = setInterval(addNumber, 1000)
+    const removeScroll = () => {
+        ulRef.current.removeEventListener('scroll', handleScroll)
     }
-    const stop = () => {
-        clearInterval(timerRef.current)
+
+    const addScroll = () => {
+        ulRef.current.addEventListener('scroll', handleScroll)
     }
+
+    // const start = () => {
+    //     timerRef.current = setInterval(addNumber, 1000)
+    // }
+    // const stop = () => {
+    //     clearInterval(timerRef.current)
+    // }
 
   return (
     <div>
-        <ul>
+        <ul ref={ulRef}>
             {numbers.map((num, index) => (
                 <li key={index}>{num}</li>
             ))}
@@ -46,11 +42,11 @@ function TestUseRef() {
         <br/>
         <br/>
         {/* Не следить */}
-        <button onClick={start}>Старт</button>
+        <button onClick={addScroll}>Cледить</button>
         <br/>
         <br/>
         {/* Cледить */}
-        <button onClick={stop}>Стоп</button>
+        <button onClick={removeScroll}>Не следить</button>
     </div>
   )
 }
