@@ -3,6 +3,9 @@ import TestHookUseState from './hooks/useState/useState'
 import TestHookUseEffect from './hooks/useEffect/useEffect';
 import TestHookUseRef from './hooks/useRef/useRef';
 import TestHookUseCallback from './hooks/useCallback/useCallback';
+import TestHookUseReducer from './hooks/useReducer/useReducer';
+
+import Life from './LifeCycle/Life';
 
 function App() {
   return (
@@ -11,7 +14,9 @@ function App() {
       {/* <TestHookUseState /> */}
       {/* <TestHookUseEffect />  */}
       {/* <TestHookUseRef /> */}
-      <TestHookUseCallback />
+      {/* <TestHookUseCallback /> */}
+      {/* <Life /> */}
+      <TestHookUseReducer />
     </div>
   );
 }
